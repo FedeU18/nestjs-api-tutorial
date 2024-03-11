@@ -2,6 +2,7 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
   Patch,
   Post,
   UseGuards,
@@ -25,7 +26,15 @@ export class BookmarkController {
   }
 
   @Get(':id')
-  getBookmarkById() {}
+  getBookmarkById(
+    @GetUser('id') userId: number,
+    @Param('id') bookmarkId: number,
+  ) {
+    return this.bookmarkService.getBookmarkById(
+      userId,
+      bookmarkId,
+    );
+  }
 
   @Post()
   createBookmark() {}

@@ -12,7 +12,17 @@ export class BookmarkService {
     });
   }
 
-  getBookmarkById() {}
+  getBookmarkById(
+    userId: number,
+    bookmarkId: number,
+  ) {
+    return this.prisma.bookmark.findFirst({
+      where: {
+        id: bookmarkId,
+        userId,
+      },
+    });
+  }
 
   createBookmark() {}
 
